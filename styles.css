@@ -1,0 +1,199 @@
+/*
+Os comandos são dados com seletor, seguido de par de chaves, a chave : valor
+
+O CSS lê de cima para baixo, portanto se tiver alguma informação
+descrita duas vezes, a última será prioritária.
+
+Specificity
+Cada seletor tem um peso e a soma dos pesos será levada em conta para que
+determinada declaração seja mais específica.
+
+#id{
+peso 100
+}
+
+.class {
+peso 10
+}
+
+element {
+peso 1
+}
+
+CSS não aceita que comece os nomes com números ou caracteres especiais
+(com exceção do _)
+
+*/
+
+
+/* Esse primeiro comando serve para limpar o CSS do navegador - reset css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+body * {
+    font-family: 'inter', sans-serif;
+    line-height: 160%;
+}
+
+body {
+    background-image: url(./assets/bg.jpg);
+    background-position: top center;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-color: #121214;
+}
+
+main {
+    max-width: 580px;
+    width: 90%;
+    margin: 32px auto;
+
+    display: grid;
+    gap: 24px;
+    margin-top: 32px;
+}
+
+header {
+    padding-top: 32px;
+    height: calc(120px + 32px);
+}
+
+header div {
+    width: 120px;
+    margin: auto;
+    background-image: linear-gradient(90deg, #9572FC 0%, #43E7AD 50.52%, #E2D45C 100%);
+    
+    border-radius: 50%;
+
+    display: flex;
+    padding: 4px;
+
+    transition: transform .3s;
+}
+
+header div:hover {
+    transform: scale(1.1)
+}
+
+header img{
+    width: 100%;
+    border-radius: 50%;
+}
+
+section {
+    color: white;
+    background-image: linear-gradient(90deg, #9572FC 0%, #43E7AD 50.52%, #E2D45C 100%);
+    padding-top: 4px;
+    border-radius: 10px;
+}
+
+section div {
+    background-color: #2A2634;
+    padding: 32px;
+    padding-top: 24px;
+    border-radius: 8px;
+
+    /* não dá pra usar border top com gradiente, por isso jogamos
+    a borda no section */
+}
+
+section h2 {
+    /*font-weight: 900; padrão no navegador, ele testou, validou e excluiu
+    font-size: 24px; padrão no navegador, ele excluiu */
+    letter-spacing: -0.47px;
+}
+
+section p {
+    /*font-weight: 400; - padrão no navegador, ele excluiu */
+    /*font-size: 16px; - padrão no navegador, ele excluiu */
+    letter-spacing: -0.18px;
+    color: #A1A1AA;
+}
+
+section ul {
+    /* display por padrão é block, ou seja, bloqueia a linha inteira
+    gap é a distância entre os elementos na linha. Posso usar por
+    estar com o display flex */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    margin-top: 24px;
+}
+
+section ul li {
+    transition: transform .3s;
+}
+
+section ul li:hover {
+    transform: scale(1.1)
+}
+.games-list img {
+    width: 90px;
+    border-radius: 8px;
+}
+
+.channel-list img {
+    border-radius: 50%;
+    width: 70px;
+    border: 1px solid #443e54;
+}
+
+/* animation */
+
+/* usando a header div aqui só para facilitar compreensão */
+header div {
+    animation: fromTop .7s 0.2s backwards;
+    /* animation-delay: 0.3s; colocamos essa propriedade está
+    junto no de cima.
+    Função backwards serve para que ele trazer a animação antes do
+    carregamento da div. (Testar sem essa propriedade pra ver a
+    diferença) */
+}
+
+main section {
+    animation: fromBotton .7s backwards;
+}
+
+main section:nth-child(1) {
+    animation-delay: 0;
+}
+
+main section:nth-child(2){
+    animation-delay: 0.4s;
+}
+
+main section:nth-child(3) {
+    animation-delay: .8s;
+}
+
+@keyframes fromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-30px)
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+@keyframes fromBotton {
+    from {
+        opacity: 0;
+        transform: translateY(30px)
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
